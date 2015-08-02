@@ -1,0 +1,10 @@
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+html,body{margin: 0; padding: 0;}
+img{border: 0;}
+button,input,optgroup,select,textarea{color: inherit;font: inherit;margin: 0;},
+article,figure,footer,header,menu,nav,section{display: block;}
+a:active,a:hover{outline: 0;}

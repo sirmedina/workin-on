@@ -1,0 +1,21 @@
+body{
+	background: #333;
+}
+
+header{
+	width: 100%;
+	background: #aaa;
+	margin: 0%;
+	font-size: 1.25vw;
+	position: absolute;
+	top: 0;
+}
+#content{}
+footer{
+	width: 100%;
+	background: #aaa;
+	margin: 0%;
+	height: 3em;
+	position: absolute;
+	bottom: 0;
+}
