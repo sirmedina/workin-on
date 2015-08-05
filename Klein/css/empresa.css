@@ -14,6 +14,7 @@ header{
 	position: fixed;
 	top: 0;
 	z-index: 999;
+
 	}
 	.logo{margin:1em 0;}
 	nav{text-align:right;}
@@ -51,20 +52,12 @@ footer{
 		font-size: 2.25em;
 	}
 	.facebook:hover{opacity: .8;}
-
-.slide1,.slide2,.slide3{height:80vh; background-size: cover;}
-.slide1 p{
-	margin: 0 0 10px 9.5%;
+.empresa{
+	position: absolute !important;
+	top: 13em;
+	background: rgba(23,189,97,.8);
 	color: #fff;
 	}
-	.slide1 p:nth-child(1){font-size: 3em; margin: 3em 0 -10px 9.5%;transition-delay: 4s;}
-	.slide1 p:nth-child(2){font-size: 5em; margin: 0 0 -10px 9.5%;}
-	.slide1 p:nth-child(3){font-size: 1.5em; margin: 0 0 -10px 9.5%; max-width: 21em;}
-
-.control{
-	margin: -5% 0 0 0;
-	text-align: center;
-}
-.direction{
-	margin: -5em 0 0 0;
-}
+	.title{font-size: 2.5em;}
+	.text{font-size: 1.25em;}
+.slide1,.slide2,.slide3{height:80vh; background-size: cover;}

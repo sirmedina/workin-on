@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Opticas Klein</title>
+		<meta charset="UTF-8"/>
+		<meta name="author" content="Douglas Medina"/>
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<meta name="description" content=""/>
+		<!-- Google Frame --><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!--[if IE]><link rel="shortcut icon" href="files/favicon.ico"><![endif]-->
+		<link rel="icon" href="files/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/contato.css"/>
+		<!-- Personal normalize.css - <link rel="stylesheet" type="text/css" href="css/normalize.css"/> -->
+		<!-- jQuery --><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<!-- jQuery Migrate --><script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+		<script src="js/lean-slider.js"></script>
+		<link rel="stylesheet" href="css/bootstrap-basic.css" type="text/css" />
+		<link href='http://fonts.googleapis.com/css?family=Homenaje' rel='stylesheet' type='text/css'>
+		<!-- Font Awesome --><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script type="text/javascript">
+		jQuery(function($) {
+		    // Asynchronously Load the map API 
+		    var script = document.createElement('script');
+		    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+		    document.body.appendChild(script);
+		});
+
+		function initialize() {
+			var map;
+			var centro = new google.maps.LatLng(-29.68953917,-51.15595399);		
+		    var bounds = new google.maps.LatLngBounds();
+		    var mapOptions = {
+		        mapTypeId: 'roadmap',
+		        disableDefaultUI: true
+			};               
+		    // Display a map on the page
+		    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+		    map.setTilt(45);
+		        
+		    // Multiple Markers
+		    var markers = [
+		        ['Óptica e relojoaria Klein, Calçadão Osvaldo Cruz', -29.68569635,-51.12905568],
+		        ['Óptica e relojoaria Klein, Bento Gonçalves', -29.683979,-51.12826443]
+		    ];
+		                        
+		    // Info Window Content
+		    var infoWindowContent = [
+		        
+		        ['<div class="info_content">' +
+		        '<h4>Loja Calçadão</h4>' +
+		        '<p>Passeio Calçadão Osvaldo Cruz, 22 - Centro - Novo Hamburgo</p>' +
+		        '</div>'],
+		        
+		        ['<div class="info_content">' +
+		        '<h4>Loja Bento Gonçalves</h4>' +
+		        '<p>Av Bento Gonçalves, XXX - Centro - Novo Hamburgo</p>' +
+		        '</div>']
+		    ];
+		        
+		    // Display multiple markers on a map
+		    var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+		    // Loop through our array of markers & place each one on the map  
+		    for( i = 0; i < markers.length; i++ ) {
+		        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+		        bounds.extend(position);
+		        marker = new google.maps.Marker({
+		            position: position,
+		            map: map,
+		            title: markers[i][0]
+		        });
+		        
+		        // Allow each marker to have an info window    
+		        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+		            return function() {
+		                infoWindow.setContent(infoWindowContent[i][0]);
+		                infoWindow.open(map, marker);
+		            }
+		        })(marker, i));
+
+		        // Automatically center the map fitting all markers on the screen
+				map.fitBounds(bounds);
+		    }
+
+		    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+		    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+		        this.setZoom(14);
+		        this.setCenter(centro);
+		        google.maps.event.removeListener(boundsListener);
+		    });
+		    
+		}	
+		</script>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<a href="index.html"><img class="logo col-md-2" src="img/otica-klein.png"></a>
+				<nav class="col-md-10">
+					<ul>
+						<li><a href="index.html">início</a></li>
+						<li><a href="empresa.html">empresa</a></li>
+						<li><a href="">loja</a></li>
+						<li><a href="#">contato</a></li>
+					</ul>
+				</nav>
+			</div>
+			</header>
+			<div id="map">
+				<form class="col-md-6">
+					
+				</form>
+			</div>
+		<footer>
+			<div class="container">
+				<p class="copy col-md-6">©2015 Óptica e relojoaria Klein - Criado por Douglas Medina - Todos os direitos reservados</p>
+				<p class="footer-contato col-md-6">Passeio  Osvaldo Cruz, 22 - Novo Hamburgo/RS - (51) 3595 4233</p>
+				<a href="http://fb.com" class="facebook"><i class="fa fa-facebook-official"></i></a>
+			</div>
+			</footer>
+
+	</body>
+</html>
